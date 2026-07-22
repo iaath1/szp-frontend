@@ -13,7 +13,6 @@ const matchPath = (path, route) => {
     for (let i = 0; i < routeParts.length; i++) {
         if (routeParts[i].startsWith(":")) {
             const paramName = routeParts[i].slice(1)
-
             params[paramName] = pathParts[i]
         } else if(routeParts[i] !== pathParts[i]) {
             return null
@@ -28,6 +27,7 @@ export const useRoute = () => {
 
     useEffect(() => {
         const onLocationChange = () => {
+            console.log("Location changed to:", window.location.pathname);
             setPath(window.location.pathname)
         }
 
@@ -42,8 +42,9 @@ export const useRoute = () => {
 }
 
 export const navigate = (path) => {
-    window.history.pushState({}, "", path)
-    window.dispatchEvent(new PopStateEvent("popstate"))
+    console.log("Navigating to:", path);
+    window.history.pushState({}, "", path);
+    window.dispatchEvent(new Event("popstate"));
 }
 
 const Router = (props) => {
@@ -63,7 +64,6 @@ const Router = (props) => {
     const NotFound = routes['*']
 
     return <NotFound/>
-
 }
 
 export default Router

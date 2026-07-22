@@ -1,20 +1,18 @@
+import Button from "../../ui/Button/Button.jsx";
+
 const AuthFooter = () => {
     return (
         <>
         <div className="divider">
             <span>or</span>
         </div>
-        <button className="social-button">
-
+        <Button className="social-button">
             Continue with Google
+        </Button>
 
-        </button>
-
-        <button className="social-button">
-
+        <Button className="social-button">
             Continue with GitHub
-
-        </button>
+        </Button>
         </>
     )
 }

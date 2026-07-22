@@ -1,18 +1,14 @@
-import { useState } from 'react'
-import './styles/PreviewPage.css'
 import './styles/normalize.css'
-import './styles/Auth.css'
-import Router from "./Routing/Router.jsx";
-import PreviewPage from "./pages/previewPage/PreviewPage.jsx";
-import LoginPage from "./pages/auth/loginPage/LoginPage.jsx";
-import RegistrationPage from "./pages/auth/registrationPage/RegistrationPage.jsx";
-
+import Router from "./router/Router.jsx";
+import Preview from "./pages/Preview/Preview.jsx";
+import Login from "./pages/Login/Login.jsx";
+import Register from "./pages/Register/Register.jsx";
 
 function App() {
   const routes = {
-    '/': PreviewPage,
-    '/login': LoginPage,
-    '/register': RegistrationPage,
+    '/': Preview,
+    '/login': Login,
+    '/register': Register,
     '*': () => <div>404 not found</div>,
   }
 
