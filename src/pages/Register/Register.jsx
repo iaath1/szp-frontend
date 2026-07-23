@@ -13,11 +13,16 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({});
+    const [termsAccepted, setTermsAccepted] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newErrors = {}
+
+        if (!termsAccepted) {
+            newErrors.terms = "You must accept the terms and conditions"
+        }
 
         if (firstName.trim().length === 0 || lastName.trim().length === 0) {
             newErrors.firstName = "First and last name is required"
@@ -48,8 +53,11 @@ const Register = () => {
             navigate("/login");
         } catch (error) {
             console.log("Error:", error)
+            setErrors({ "backendError": "User with this email already exists" })
         }
     };
+
+    console.log("Register rendered. Current errors:", errors);
 
     return (
         <main className="auth">
@@ -107,12 +115,17 @@ const Register = () => {
                     />
 
                     <label className="terms">
-                        <input type="checkbox" />
+                        <input type="checkbox"
+                            checked={termsAccepted}
+                            onChange={(e) => setTermsAccepted(e.target.checked)} />
+
                         I agree with the
                         <a href="#"> Terms of Service </a>
                         &
                         <a href="#"> Privacy Policy</a>
                     </label>
+                    {errors.terms && <p className="error">{errors.terms}</p>}
+                    {errors.backendError && <p className="error">{errors.backendError}</p>}
 
                     <Button type="submit" className="auth-button">
                         Sign up

@@ -4,6 +4,7 @@ import Button from "../../components/ui/Button/Button.jsx";
 import Link from "../../components/ui/Link/Link.jsx";
 import AuthFooter from "../../components/layout/AuthFooter/AuthFooter.jsx";
 import authAPI from "../../api/auth.js";
+import { navigate } from "../../router/Router.jsx";
 import "./Auth.css"; // We will move Auth.css here
 
 const Login = () => {
@@ -33,9 +34,12 @@ const Login = () => {
         try {
             const data = await authAPI.login(email, password);
             console.log("Logged in successfully:", data);
-            // Handle success (e.g., save token, redirect)
+            localStorage.setItem("token", data?.token);
+            localStorage.setItem("firstname", data?.firstname);
+            localStorage.setItem("lastname", data?.lastname);
+            navigate("/dashboard");
         } catch (error) {
-            console.error("Failed to login:", error, "Data:", data);
+            console.error("Failed to login:", error);
         }
     };
 
