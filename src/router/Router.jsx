@@ -57,7 +57,7 @@ const Router = (props) => {
         if(params) {
             const Page = routes[route]
 
-            return <Page params={params} />
+            return <Page key={path} params={params} />
         }
     }
 

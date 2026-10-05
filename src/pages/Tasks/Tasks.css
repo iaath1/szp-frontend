@@ -1,0 +1,873 @@
+.global-tasks-main {
+    padding: 32px;
+    background-color: var(--bg-secondary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.global-tasks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.gth-left h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.gth-left p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.gth-right {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.view-toggles {
+    display: flex;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.view-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.view-btn:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+}
+
+.view-btn.active {
+    background-color: var(--bg-accent-light);
+    color: var(--accent-color);
+}
+
+/* Layout */
+.global-tasks-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Left Column */
+.gt-left-col {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Filters */
+.gt-filters {
+    display: flex;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.gt-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-primary);
+    flex: 1;
+    min-width: 200px;
+}
+
+.gt-search input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 0.875rem;
+}
+
+.gt-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-primary);
+    cursor: pointer;
+    min-width: 130px;
+    position: relative;
+    user-select: none;
+}
+
+.gt-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 180px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 50;
+    overflow: hidden;
+    animation: fadeIn 0.15s ease-out;
+}
+
+.gt-dropdown-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: none;
+    border: none;
+    border-bottom: 1px solid #F3F4F6;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s;
+}
+
+.gt-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.gt-dropdown-item:hover, .gt-dropdown-item.active {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.gt-dropdown-item.active {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.gt-dropdown-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.gt-dropdown-label {
+    font-size: 0.6875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.gt-dropdown-val {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.gt-more-filters {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    height: 40px;
+}
+
+/* Tabs */
+.gt-tabs {
+    display: flex;
+    gap: 24px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.gt-tab {
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    margin-bottom: -1px;
+}
+
+.gt-tab:hover {
+    color: var(--text-primary);
+}
+
+.gt-tab.active {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+.gt-tab-count {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+.gt-tab.active .gt-tab-count {
+    background-color: var(--bg-accent-light);
+    color: var(--accent-color);
+}
+
+/* Table */
+.gt-table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.gt-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.gt-table th {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.gt-table td {
+    padding: 16px;
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+.gt-table tbody tr:hover {
+    background-color: var(--bg-secondary);
+}
+
+.gt-td-id {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.gt-td-title {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.gt-td-project {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.gt-project-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gt-td-due {
+    color: var(--text-secondary);
+}
+
+.overdue-text {
+    color: #EF4444;
+    font-weight: 500;
+}
+
+.gt-td-assignee {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gt-td-assignee img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+/* Pagination */
+.gt-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.gt-page-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.gt-page-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.gt-page-btn:hover {
+    background: var(--bg-secondary);
+}
+
+.gt-page-btn.active {
+    background-color: var(--bg-accent-light);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.gt-per-page {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border-color);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Right Column Widgets */
+.gt-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.gt-widget {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.gt-widget h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.gt-widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.gt-widget-header h3 {
+    margin-bottom: 0;
+}
+
+.gt-link {
+    color: var(--accent-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* Summary List */
+.gt-summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.gt-summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.gt-si-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+}
+
+.gt-si-right {
+    font-weight: 600;
+}
+
+/* Chart */
+.gt-chart-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.gt-donut-chart {
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+
+.circular-chart {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 250px;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: var(--border-color);
+    stroke-width: 3.8;
+}
+
+.circle-completed {
+    fill: none;
+    stroke: #10B981;
+    stroke-width: 3.8;
+    stroke-linecap: round;
+}
+
+.circle-review {
+    fill: none;
+    stroke: #8B5CF6;
+    stroke-width: 3.8;
+    stroke-linecap: round;
+}
+
+.circle-inprogress {
+    fill: none;
+    stroke: #3B82F6;
+    stroke-width: 3.8;
+    stroke-linecap: round;
+}
+
+.circle-todo {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 3.8;
+    stroke-linecap: round;
+}
+
+.gt-donut-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gt-dt-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.gt-dt-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.gt-chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gt-cl-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8125rem;
+}
+
+.gt-cl-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+}
+
+.gt-cl-right {
+    color: var(--text-secondary);
+}
+
+/* Deadlines */
+.gt-deadlines-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.gt-deadline-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.gt-dl-info {
+    flex: 1;
+}
+
+.gt-dl-info h4 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 0 2px 0;
+}
+
+.gt-dl-info span {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.gt-dl-date {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Help Card */
+.gt-help-card {
+    background-color: var(--bg-secondary);
+    border: 1px dashed #D1D5DB;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.gt-help-card h3 {
+    margin-bottom: 8px;
+}
+
+.gt-help-card p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.gt-help-btn {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* New Task Dropdown */
+.new-task-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.project-select-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 240px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 50;
+    overflow: hidden;
+    animation: fadeIn 0.15s ease-out;
+}
+
+.psd-header {
+    padding: 12px 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.psd-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.psd-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #F3F4F6;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.psd-item:last-child {
+    border-bottom: none;
+}
+
+.psd-item:hover {
+    background-color: var(--bg-secondary);
+}
+
+.psd-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.psd-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.psd-empty {
+    padding: 24px 16px;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Kanban View */
+.gt-kanban-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+    height: 100%;
+}
+
+.gt-kanban-col {
+    flex: 0 0 280px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.gt-kanban-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 0 4px;
+}
+
+.gt-kanban-header h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.gt-kanban-count {
+    background-color: #E5E7EB;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.gt-kanban-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gt-kanban-card {
+    background: var(--bg-primary);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+}
+
+.gt-kc-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.gt-kanban-card h4 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.gt-kc-project {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.gt-kc-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid #F3F4F6;
+}
+
+.gt-kc-date {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.gt-kc-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+/* Calendar View */
+.gt-calendar-container {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.gt-calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.gt-calendar-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.gt-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.gt-cal-day-name {
+    text-align: center;
+    padding: 12px 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+.gt-cal-day-name:last-child {
+    border-right: none;
+}
+
+.gt-cal-cell {
+    min-height: 100px;
+    padding: 8px;
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+.gt-cal-cell:nth-child(7n) {
+    border-right: none;
+}
+.gt-cal-cell.today {
+    background-color: var(--bg-secondary);
+}
+.gt-cal-cell.today .gt-cal-date {
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gt-cal-date {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.gt-cal-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.gt-cal-task-pill {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+}
+.bg-todo { background-color: var(--accent-color); }
+.bg-in-progress { background-color: #3B82F6; }
+.bg-review { background-color: #8B5CF6; }
+.bg-done { background-color: #10B981; }

@@ -1,10 +1,16 @@
 import React from 'react';
-import { Home, FolderClosed, CheckSquare, Calendar, Users, BarChart2, MessageSquare, FileText, Settings, LogOut } from 'lucide-react';
+import { Home, FolderClosed, CheckSquare, Calendar, Users, BarChart2, MessageSquare, FileText, Settings, LogOut, Mail } from 'lucide-react';
 import { navigate, useRoute } from "../../../router/Router.jsx";
+import { getAvatarUrl } from '../../../utils/avatar.js';
 import './Sidebar.css';
 
 const Sidebar = () => {
     const currentPath = useRoute();
+
+    const name = localStorage.getItem("firstname")
+    const surname = localStorage.getItem("lastname")
+
+    const avatarFullPath = getAvatarUrl(localStorage.getItem("avatar"), name);
 
     const menuItems = [
         { name: 'Dashboard', icon: Home, path: '/dashboard' },
@@ -23,10 +29,10 @@ const Sidebar = () => {
             <div className="sidebar-logo">
                 <div className="logo-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="3" width="7" height="7" rx="2" fill="#592BF0"/>
-                        <rect x="14" y="3" width="7" height="7" rx="2" fill="#592BF0"/>
-                        <rect x="14" y="14" width="7" height="7" rx="2" fill="#592BF0"/>
-                        <rect x="3" y="14" width="7" height="7" rx="2" fill="#592BF0"/>
+                        <rect x="3" y="3" width="7" height="7" rx="2" fill="var(--accent-color)" />
+                        <rect x="14" y="3" width="7" height="7" rx="2" fill="var(--accent-color)" />
+                        <rect x="14" y="14" width="7" height="7" rx="2" fill="var(--accent-color)" />
+                        <rect x="3" y="14" width="7" height="7" rx="2" fill="var(--accent-color)" />
                     </svg>
                 </div>
                 <span className="logo-text">ProManage</span>
@@ -37,7 +43,7 @@ const Sidebar = () => {
                     const Icon = item.icon;
                     const isActive = currentPath === item.path;
                     return (
-                        <a 
+                        <a
                             key={item.name}
                             href={item.path}
                             className={`nav-item ${isActive ? 'active' : ''}`}
@@ -55,12 +61,12 @@ const Sidebar = () => {
 
             <div className="sidebar-bottom">
                 <div className="user-profile">
-                    <img src="https://i.pravatar.cc/150?img=11" alt="User Avatar" className="avatar" />
+                    <img src={avatarFullPath} alt="User Avatar" className="avatar" />
                     <div className="user-info">
-                        <span className="user-name">Misha Stozhkov</span>
+                        <span className="user-name">{`${name} ${surname}`}</span>
                         <span className="user-role">Project Manager</span>
                     </div>
-                    <svg className="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2"><path d="M6 9l6 6 6-6"/></svg>
+                    <svg className="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2"><path d="M6 9l6 6 6-6" /></svg>
                 </div>
                 <button className="logout-btn" onClick={() => navigate('/login')}>
                     <LogOut size={18} />

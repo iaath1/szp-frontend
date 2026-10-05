@@ -1,0 +1,79 @@
+:root {
+  --accent-color: var(--accent-color);
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F9FAFB;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --border-color: #E5E7EB;
+  --bg-accent-light: color-mix(in srgb, var(--accent-color) 10%, transparent);
+  --bg-success-light: #ECFDF5;
+  --bg-warning-light: #FEF3C7;
+  --bg-danger-light: #FEE2E2;
+}
+
+[data-theme='dark'] {
+  --bg-primary: #111827;
+  --bg-secondary: #1F2937;
+  --text-primary: #F9FAFB;
+  --text-secondary: #9CA3AF;
+  --border-color: #374151;
+  --bg-accent-light: color-mix(in srgb, var(--accent-color) 25%, transparent);
+  --bg-success-light: rgba(16, 185, 129, 0.25);
+  --bg-warning-light: rgba(245, 158, 11, 0.25);
+  --bg-danger-light: rgba(239, 68, 68, 0.25);
+}
+
+body {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+[data-theme='system'] {
+    /* Fallback handled by media query below */
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme='system'] {
+    --bg-primary: #111827;
+    --bg-secondary: #1F2937;
+    --text-primary: #F9FAFB;
+    --text-secondary: #9CA3AF;
+    --border-color: #374151;
+    --bg-accent-light: color-mix(in srgb, var(--accent-color) 25%, transparent);
+    --bg-success-light: rgba(16, 185, 129, 0.25);
+    --bg-warning-light: rgba(245, 158, 11, 0.25);
+    --bg-danger-light: rgba(239, 68, 68, 0.25);
+  }
+}
+
+/* Form Inputs */
+input, textarea, select {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+input::placeholder, textarea::placeholder {
+    color: var(--text-secondary);
+}
+input:focus, textarea:focus, select:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+/* Recharts Dark Mode Support */
+.recharts-default-tooltip {
+    background-color: var(--bg-primary) !important;
+    border-color: var(--border-color) !important;
+}
+.recharts-tooltip-item-name, .recharts-tooltip-item-value, .recharts-tooltip-label {
+    color: var(--text-primary) !important;
+}
+.recharts-cartesian-axis-tick-value {
+    fill: var(--text-secondary) !important;
+}
+.recharts-cartesian-grid-horizontal line, .recharts-cartesian-grid-vertical line {
+    stroke: var(--border-color) !important;
+}
+.recharts-legend-item-text {
+    color: var(--text-secondary) !important;
+}

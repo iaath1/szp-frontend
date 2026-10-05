@@ -1,0 +1,120 @@
+.calendar-tab {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.calendar-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.calendar-nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.calendar-day-header {
+    background: var(--bg-secondary);
+    padding: 12px;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.calendar-day-header:last-child {
+    border-right: none;
+}
+
+.calendar-cell {
+    min-height: 120px;
+    padding: 8px;
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-primary);
+}
+
+.calendar-cell:nth-child(7n) {
+    border-right: none;
+}
+
+.empty-cell {
+    background: var(--bg-secondary);
+}
+
+.calendar-cell.today {
+    background: var(--bg-accent-light);
+}
+
+.calendar-cell.today .day-number {
+    background: var(--accent-color);
+    color: #fff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.day-number {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.cell-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cal-item {
+    font-size: 0.75rem;
+    padding: 4px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.task-item {
+    background: var(--bg-secondary);
+    border-left: 3px solid;
+    color: var(--text-primary);
+}
+
+.task-item:hover {
+    background: #E5E7EB;
+}
+
+.milestone-item {
+    background: #FEF3C7;
+    color: #B45309;
+    font-weight: 500;
+}

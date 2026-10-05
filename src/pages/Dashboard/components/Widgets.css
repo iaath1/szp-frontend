@@ -1,8 +1,8 @@
 .widget {
-    background: white;
+    background: var(--bg-primary);
     border-radius: 16px;
     padding: 24px;
-    border: 1px solid #ECECEC;
+    border: 1px solid var(--border-color);
     box-shadow: 0 4px 20px rgba(0,0,0,0.02);
 }
 
@@ -16,35 +16,35 @@
 .widget-header h2 {
     font-size: 16px;
     font-weight: 700;
-    color: #111827;
+    color: var(--text-primary);
     margin: 0;
 }
 
 .view-all {
     font-size: 13px;
-    color: #592BF0;
+    color: var(--accent-color);
     font-weight: 600;
     text-decoration: none;
 }
 
 .date-select {
     padding: 8px 14px;
-    border: 1px solid #ECECEC;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     font-size: 13px;
     font-weight: 500;
-    color: #374151;
-    background: white;
+    color: var(--text-primary);
+    background: var(--bg-primary);
     outline: none;
     cursor: pointer;
 }
 
 /* StatCard Specifics */
 .stat-card {
-    background: white;
+    background: var(--bg-primary);
     border-radius: 16px;
     padding: 24px;
-    border: 1px solid #ECECEC;
+    border: 1px solid var(--border-color);
     box-shadow: 0 4px 20px rgba(0,0,0,0.02);
     display: flex;
     gap: 18px;
@@ -66,14 +66,14 @@
 .stat-info h3 {
     font-size: 14px;
     font-weight: 500;
-    color: #6B7280;
+    color: var(--text-secondary);
     margin: 0 0 8px 0;
 }
 
 .stat-info h2 {
     font-size: 28px;
     font-weight: 700;
-    color: #111827;
+    color: var(--text-primary);
     margin: 0 0 10px 0;
 }
 
@@ -94,7 +94,7 @@
 }
 
 .stat-change span {
-    color: #9CA3AF;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
@@ -131,13 +131,13 @@
 .pie-total {
     font-size: 28px;
     font-weight: 700;
-    color: #111827;
+    color: var(--text-primary);
     line-height: 1;
 }
 
 .pie-label {
     font-size: 13px;
-    color: #6B7280;
+    color: var(--text-secondary);
     margin-top: 4px;
 }
 
@@ -168,12 +168,12 @@
 }
 
 .legend-name {
-    color: #374151;
+    color: var(--text-primary);
     font-weight: 500;
 }
 
 .legend-value {
-    color: #6B7280;
+    color: var(--text-secondary);
 }
 
 /* Task and Activity Lists */
@@ -195,11 +195,11 @@
     align-items: center;
     gap: 12px;
     font-weight: 600;
-    color: #111827;
+    color: var(--text-primary);
 }
 
 .task-category {
-    color: #6B7280;
+    color: var(--text-secondary);
 }
 
 .task-date {
@@ -211,7 +211,7 @@
 }
 
 .task-date.normal {
-    color: #6B7280;
+    color: var(--text-secondary);
 }
 
 .task-date.warning {
@@ -241,8 +241,8 @@
     height: 32px;
     border-radius: 50%;
     border: 2px solid white;
-    background-color: #F3F0FF;
-    color: #592BF0;
+    background-color: var(--bg-accent-light);
+    color: var(--accent-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -269,14 +269,14 @@
 .activity-details p {
     margin: 0 0 6px 0;
     font-size: 14px;
-    color: #111827;
+    color: var(--text-primary);
     font-weight: 500;
     line-height: 1.4;
 }
 
 .activity-details span {
     font-size: 13px;
-    color: #9CA3AF;
+    color: var(--text-secondary);
 }
 
 .workload-item {
@@ -303,26 +303,28 @@
 .workload-user span {
     font-size: 14px;
     font-weight: 500;
-    color: #374151;
+    color: var(--text-primary);
 }
 
 .workload-bar-container {
     height: 8px;
-    background-color: #F3F4F6;
+    background-color: var(--bg-secondary);
     border-radius: 4px;
     overflow: hidden;
 }
 
 .workload-bar {
     height: 100%;
-    background-color: #592BF0;
+    background-color: var(--accent-color);
     border-radius: 4px;
 }
 
 .workload-percent {
     font-size: 13px;
     font-weight: 500;
-    color: #6B7280;
+    color: var(--text-secondary);
     width: 36px;
     text-align: right;
 }
+
+.activity-item { align-items: center; }

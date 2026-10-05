@@ -2,7 +2,7 @@ body {
 
     font-family: Inter, sans-serif;
 
-    background: #F8FAFC;
+    background: var(--bg-secondary);
 }
 
 .auth {
@@ -24,7 +24,7 @@ body {
 
     max-width: 900px;
 
-    background: white;
+    background: var(--bg-primary);
 
     padding: 45px;
 
@@ -32,7 +32,7 @@ body {
 
     box-shadow: 0 20px 60px rgba(0, 0, 0, .08);
 
-    border: 1px solid #ECECEC;
+    border: 1px solid var(--border-color);
 }
 
 .auth-header {
@@ -46,14 +46,14 @@ body {
 
     font-weight: 700;
 
-    color: #111827;
+    color: var(--text-primary);
 
     margin-bottom: 10px;
 }
 
 .auth-header p {
 
-    color: #6B7280;
+    color: var(--text-secondary);
 
     font-size: 16px;
 }
@@ -80,7 +80,7 @@ body {
 
     font-weight: 600;
 
-    color: #374151;
+    color: var(--text-primary);
 
     font-size: 15px;
 }
@@ -89,7 +89,7 @@ body {
 
     height: 56px;
 
-    border: 1px solid #E5E7EB;
+    border: 1px solid var(--border-color);
 
     border-radius: 14px;
 
@@ -102,7 +102,7 @@ body {
 
 .form-group input:focus {
 
-    border-color: #592BF0;
+    border-color: var(--accent-color);
 
     box-shadow: 0 0 0 4px rgba(89, 43, 240, .15);
 }
@@ -131,7 +131,7 @@ body {
 
     text-decoration: none;
 
-    color: #592BF0;
+    color: var(--accent-color);
 }
 
 .auth-button {
@@ -142,7 +142,7 @@ body {
 
     border-radius: 14px;
 
-    background: #592BF0;
+    background: var(--accent-color);
 
     color: white;
 
@@ -183,18 +183,19 @@ body {
 
     padding: 0 18px;
 
-    color: #9CA3AF;
+    color: var(--text-secondary);
 }
 
 .social-button {
+    color: var(--text-primary);
 
     width: 100%;
 
     height: 56px;
 
-    background: white;
+    background: var(--bg-primary);
 
-    border: 1px solid #E5E7EB;
+    border: 1px solid var(--border-color);
 
     border-radius: 14px;
 
@@ -205,9 +206,9 @@ body {
 
 .social-button:hover {
 
-    border-color: #592BF0;
+    border-color: var(--accent-color);
 
-    background: #F9F7FF;
+    background: var(--bg-accent-light);
 }
 
 .bottom-text {
@@ -216,12 +217,12 @@ body {
 
     text-align: center;
 
-    color: #6B7280;
+    color: var(--text-secondary);
 }
 
 .bottom-text a {
 
-    color: #592BF0;
+    color: var(--accent-color);
 
     text-decoration: none;
 
@@ -252,7 +253,7 @@ body {
 
     font-size: 14px;
 
-    color: #6B7280;
+    color: var(--text-secondary);
 
     margin-top: 5px;
 
@@ -266,7 +267,7 @@ body {
 
 .terms a {
 
-    color: #592BF0;
+    color: var(--accent-color);
 
     text-decoration: none;
 

@@ -1,8 +1,8 @@
 .sidebar {
     width: 260px;
     height: 100vh;
-    background-color: white;
-    border-right: 1px solid #ECECEC;
+    background-color: var(--bg-primary);
+    border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     padding: 24px 20px;
@@ -23,7 +23,7 @@
 .logo-text {
     font-size: 22px;
     font-weight: 700;
-    color: #111827;
+    color: var(--text-primary);
 }
 
 .sidebar-nav {
@@ -39,7 +39,7 @@
     gap: 14px;
     padding: 12px 16px;
     border-radius: 12px;
-    color: #6B7280;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 15px;
     font-weight: 500;
@@ -47,26 +47,26 @@
 }
 
 .nav-item:hover {
-    background-color: #F8FAFC;
-    color: #374151;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 .nav-item.active {
-    background-color: #F3F0FF;
-    color: #592BF0;
+    background-color: var(--bg-accent-light);
+    color: var(--accent-color);
 }
 
 .nav-item.active .nav-icon {
-    color: #592BF0;
+    color: var(--accent-color);
 }
 
 .nav-icon {
-    color: #9CA3AF;
+    color: var(--text-secondary);
 }
 
 .sidebar-bottom {
     margin-top: auto;
-    border-top: 1px solid #ECECEC;
+    border-top: 1px solid var(--border-color);
     padding-top: 24px;
     display: flex;
     flex-direction: column;
@@ -97,12 +97,12 @@
 .user-name {
     font-size: 14px;
     font-weight: 600;
-    color: #111827;
+    color: var(--text-primary);
 }
 
 .user-role {
     font-size: 12px;
-    color: #6B7280;
+    color: var(--text-secondary);
 }
 
 .dropdown-icon {
@@ -116,9 +116,9 @@
     gap: 8px;
     width: 100%;
     padding: 12px;
-    border: 1px solid #ECECEC;
-    background: white;
-    color: #592BF0;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    color: var(--accent-color);
     border-radius: 12px;
     font-size: 14px;
     font-weight: 600;
@@ -127,6 +127,6 @@
 }
 
 .logout-btn:hover {
-    background: #F9F7FF;
-    border-color: #592BF0;
+    background: var(--bg-accent-light);
+    border-color: var(--accent-color);
 }

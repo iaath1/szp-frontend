@@ -7,7 +7,7 @@ const FEATURES_1 = [
         id: 1,
         title: "Fast start",
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#592bf0" strokeWidth="2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" style={{ stroke: 'var(--accent-color)' }} strokeWidth="2">
                 <polygon points="13 2 3 14 11 14 9 22 21 8 13 8 13 2"/>
             </svg>
         )
@@ -28,7 +28,7 @@ const FEATURES_1 = [
         id: 3,
         title: "Secure your data",
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#592bf0" strokeWidth="2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" style={{ stroke: 'var(--accent-color)' }} strokeWidth="2">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
         )
@@ -41,7 +41,7 @@ const FEATURES_2 = [
         title: "Task management",
         desc: "Create tasks, delegate it to someone, and observe progress",
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#592bf0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" style={{ stroke: 'var(--accent-color)' }} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="4" width="18" height="16" rx="2"/>
                 <line x1="8" y1="8" x2="8" y2="16"/>
                 <line x1="16" y1="8" x2="16" y2="12"/>
@@ -66,7 +66,7 @@ const FEATURES_2 = [
         title: "Team work",
         desc: "Comment, share files, and work together in real-time",
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#592bf0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" style={{ stroke: 'var(--accent-color)' }} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                 <circle cx="9" cy="7" r="4"/>
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -79,7 +79,7 @@ const FEATURES_2 = [
         title: "Analytics and conclusions",
         desc: "Receive analytic data and decide smart decisions",
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#592bf0" strokeWidth="2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" style={{ stroke: 'var(--accent-color)' }} strokeWidth="2">
                 <line x1="18" y1="20" x2="18" y2="10"/>
                 <line x1="12" y1="20" x2="12" y2="4"/>
                 <line x1="6" y1="20" x2="6" y2="14"/>

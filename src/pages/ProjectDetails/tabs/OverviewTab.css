@@ -1,0 +1,277 @@
+.overview-tab {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+.ot-main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.ot-charts-row, .ot-lists-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.ot-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.ot-card {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.card-link {
+    font-size: 13px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Sidebar Specifics */
+.team-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.team-member-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.member-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.member-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.member-name-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.member-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.member-badge {
+    font-size: 10px;
+    padding: 2px 6px;
+    background: var(--bg-accent-light);
+    color: var(--accent-color);
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.member-role {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.btn-secondary.w-full {
+    width: 100%;
+}
+.mt-16 { margin-top: 16px; }
+
+/* Files */
+.files-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.file-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+}
+
+.file-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+.file-meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.btn-icon-small {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+}
+.btn-icon-small:hover { background: var(--bg-secondary); color: var(--text-primary); }
+
+/* Tags */
+.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-pill {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.tag-design { background: var(--bg-accent-light); color: var(--accent-color); }
+.tag-dev { background: #E0F2FE; color: #0EA5E9; }
+.tag-web { background: #ECFDF5; color: #10B981; }
+
+.tag-add {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px dashed #D1D5DB;
+    background: none;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+.tag-add:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+
+/* Milestones */
+.milestones-card {
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.milestones-timeline {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 10px;
+}
+
+.ms-line {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: #E5E7EB;
+    z-index: 1;
+}
+
+.milestone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+    background: var(--bg-primary);
+    width: 100px;
+}
+
+.ms-marker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 13px;
+    background: var(--bg-primary);
+    border: 2px solid #E5E7EB;
+    color: var(--text-secondary);
+}
+
+.milestone.completed .ms-marker {
+    background: #10B981;
+    border-color: #10B981;
+    color: white;
+}
+
+.milestone.in-progress .ms-marker {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}
+
+.ms-details {
+    text-align: center;
+}
+
+.ms-details h4 {
+    margin: 0 0 4px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.ms-details span {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.ms-status {
+    color: var(--accent-color) !important;
+    font-weight: 500;
+}

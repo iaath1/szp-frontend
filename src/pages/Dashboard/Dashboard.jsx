@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { FolderClosed, CheckCircle2, Clock, CalendarX2 } from 'lucide-react';
 import Sidebar from '../../components/layout/Sidebar/Sidebar.jsx';
 import Header from '../../components/layout/Header/Header.jsx';
-import StatCard from './components/StatCard.jsx';
+import StatCard from '../../components/common/StatCard.jsx';
 import ProgressChart from './components/ProgressChart.jsx';
 import StatusChart from './components/StatusChart.jsx';
 import UpcomingTasks from './components/UpcomingTasks.jsx';
@@ -13,16 +13,18 @@ import './Dashboard.css';
 import { jwtDecode } from "jwt-decode";
 import { navigate } from "../../router/Router.jsx";
 import projects from "../../api/projects.js"
+import tasks from "../../api/tasks.js"
+import activities from "../../api/activities.js"
 
 const Dashboard = () => {
 
     useEffect(() => {
-        if (!localStorage.getItem("token")) {
+        if (!localStorage.getItem("accessToken")) {
             navigate("/login");
         }
     }, []);
 
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("accessToken");
     let decodedToken = null;
 
     if (token) {
@@ -34,11 +36,55 @@ const Dashboard = () => {
         }
     }
 
-    const projectsCount = projects.getProjectsCount();
-    console.log(projectsCount);
+    const [stats, setStats] = useState({ projects: 0, tasks: 0, statuses: {}, upcomingTasks: [], workload: [], recentActivities: [] });
 
-    const tasksCount = projects.getTasksCount();
-    console.log(tasksCount)
+    useEffect(() => {
+        const fetchDashboardData = async () => {
+            try {
+                // Ждем реальные ответы от сервера
+                const projectsCount = await projects.getProjectsCount();
+                const tasksCount = await tasks.getTasksCount();
+                const tasksCountByStatuses = await tasks.getTasksCountByStatuses();
+                const upcomingTasks = await tasks.getUpcomingTasks();
+                let workload = [];
+                try {
+                    workload = await tasks.getTeamWorkload();
+                } catch (e) {
+                    console.error("Could not fetch team workload", e);
+                }
+
+                let recentActivities = [];
+                try {
+                    recentActivities = await activities.getRecentActivities();
+                } catch (e) {
+                    console.error("Could not fetch recent activities", e);
+                }
+
+                console.log("Projects:", projectsCount);
+                console.log("Tasks:", tasksCount);
+                console.log("Statuses:", tasksCountByStatuses);
+                console.log("Upcoming Tasks:", upcomingTasks);
+                console.log("Team Workload:", workload);
+                console.log("Recent Activities:", recentActivities);
+
+                // Сохраняем все в стейт
+                setStats({
+                    projects: projectsCount,
+                    tasks: tasksCount,
+                    statuses: tasksCountByStatuses,
+                    upcomingTasks: upcomingTasks,
+                    workload: workload,
+                    recentActivities: recentActivities,
+                });
+            } catch (error) {
+                console.error("Error fetching stats:", error);
+            }
+        };
+
+        if (token) {
+            fetchDashboardData();
+        }
+    }, [token]);
 
     return (
         <div className="dashboard-layout">
@@ -51,38 +97,38 @@ const Dashboard = () => {
                     <div className="stats-grid">
                         <StatCard
                             title="Total Projects"
-                            value="8"
-                            change={2}
-                            isPositive={true}
+                            value={stats.projects?.count || 0}
+                            change={stats.projects?.change || 0}
+                            isPositive={(stats.projects?.change || 0) >= 0}
                             icon={FolderClosed}
-                            iconBg="#F3F0FF"
-                            iconColor="#592BF0"
+                            iconBg="var(--bg-accent-light)"
+                            iconColor="var(--accent-color)"
                         />
                         <StatCard
                             title="Tasks Completed"
-                            value="24"
-                            change={12}
-                            isPositive={true}
+                            value={stats.statuses?.done || 0}
+                            change={stats.statuses?.doneChange || 0}
+                            isPositive={(stats.statuses?.doneChange || 0) >= 0}
                             icon={CheckCircle2}
-                            iconBg="#ECFDF5"
+                            iconBg="var(--bg-success-light)"
                             iconColor="#10B981"
                         />
                         <StatCard
                             title="Tasks In Progress"
-                            value="16"
-                            change={-4}
-                            isPositive={false}
+                            value={stats.statuses?.inProgress || 0}
+                            change={stats.statuses?.inProgressChange || 0}
+                            isPositive={(stats.statuses?.inProgressChange || 0) >= 0}
                             icon={Clock}
-                            iconBg="#FEF3C7"
+                            iconBg="var(--bg-warning-light)"
                             iconColor="#F59E0B"
                         />
                         <StatCard
                             title="Overdue Tasks"
-                            value="5"
-                            change={-2}
-                            isPositive={false}
+                            value={stats.statuses?.overdue || 0}
+                            change={stats.statuses?.overdueChange || 0}
+                            isPositive={(stats.statuses?.overdueChange || 0) <= 0}
                             icon={CalendarX2}
-                            iconBg="#FEE2E2"
+                            iconBg="var(--bg-danger-light)"
                             iconColor="#EF4444"
                         />
                     </div>
@@ -90,17 +136,17 @@ const Dashboard = () => {
                     {/* Middle Row: Charts */}
                     <div className="charts-grid">
                         <ProgressChart />
-                        <StatusChart />
+                        <StatusChart statuses={stats.statuses} />
                     </div>
 
                     {/* Bottom Row: Lists */}
                     <div className="lists-grid">
                         <div className="lists-left">
-                            <UpcomingTasks />
+                            <UpcomingTasks upcomingTasks={stats?.upcomingTasks} />
                         </div>
                         <div className="lists-right">
-                            <RecentActivity />
-                            <TeamWorkload />
+                            <RecentActivity precomputedActivities={stats.recentActivities} />
+                            <TeamWorkload precomputedWorkload={stats.workload} />
                         </div>
                     </div>
                 </div>

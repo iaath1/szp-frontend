@@ -1,0 +1,116 @@
+.tasks-tab {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    overflow: hidden;
+}
+
+.tasks-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tasks-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 16px;
+    width: 300px;
+}
+
+.tasks-search input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+}
+
+.tasks-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.tasks-table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tasks-table th {
+    text-align: left;
+    padding: 16px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+}
+
+.tasks-table td {
+    padding: 16px 24px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.tasks-table tr:last-child td {
+    border-bottom: none;
+}
+
+.task-title-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-indicator.to-do { background: #D1D5DB; }
+.status-indicator.in-progress { background: var(--accent-color); }
+.status-indicator.review { background: #F59E0B; }
+.status-indicator.done { background: #10B981; }
+
+.assignee-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.priority-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.priority-badge.high { background: #FEE2E2; color: #EF4444; }
+.priority-badge.medium { background: #FEF3C7; color: #F59E0B; }
+.priority-badge.low { background: #E0F2FE; color: #0EA5E9; }
+
+.task-status {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.task-due {
+    color: var(--text-secondary);
+    font-size: 13px;
+}

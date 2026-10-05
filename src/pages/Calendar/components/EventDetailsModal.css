@@ -1,0 +1,109 @@
+.event-details-content {
+    padding: 0;
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: none;
+    color: white;
+}
+
+.header-title-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.close-btn {
+    color: white;
+    opacity: 0.8;
+}
+
+.close-btn:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.event-type-badge {
+    align-self: flex-start;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Header colors based on event type */
+.event-header-meeting { background-color: #3b82f6; } /* Blue */
+.event-header-deadline { background-color: #ef4444; } /* Red */
+.event-header-milestone { background-color: #8b5cf6; } /* Purple */
+.event-header-holiday { background-color: #10b981; } /* Green */
+.event-header-general { background-color: var(--text-secondary); } /* Gray */
+
+.event-details-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detail-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.detail-icon {
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.detail-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detail-text strong {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detail-text span {
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.detail-text p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.description-row {
+    margin-top: 8px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.event-details-content .modal-actions {
+    padding: 16px 24px;
+    margin-top: 0;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+}

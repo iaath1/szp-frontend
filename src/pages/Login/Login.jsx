@@ -11,6 +11,8 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({})
+    const [show2faModal, setShow2faModal] = useState(false);
+    const [twoFaCode, setTwoFaCode] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,13 +35,37 @@ const Login = () => {
 
         try {
             const data = await authAPI.login(email, password);
+            if (data?.message === "Enter your secret key.") {
+                setShow2faModal(true);
+                return;
+            }
+
             console.log("Logged in successfully:", data);
-            localStorage.setItem("token", data?.token);
+            localStorage.setItem("accessToken", data?.accessToken);
+            localStorage.setItem("refreshToken", data?.refreshToken);
             localStorage.setItem("firstname", data?.firstname);
             localStorage.setItem("lastname", data?.lastname);
+            localStorage.setItem("avatar", data?.avatarUrl);
             navigate("/dashboard");
         } catch (error) {
             console.error("Failed to login:", error);
+        }
+    };
+
+    const handle2faSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const data = await authAPI.login2fa(email, password, twoFaCode.trim());
+            console.log("Logged in successfully with 2FA:", data);
+            localStorage.setItem("accessToken", data?.accessToken);
+            localStorage.setItem("refreshToken", data?.refreshToken);
+            localStorage.setItem("firstname", data?.firstname);
+            localStorage.setItem("lastname", data?.lastname);
+            localStorage.setItem("avatar", data?.avatarUrl);
+            navigate("/dashboard");
+        } catch (error) {
+            console.error("Failed to verify 2FA:", error);
+            setErrors({ twofa: "Invalid 2FA code" });
         }
     };
 
@@ -91,6 +117,29 @@ const Login = () => {
                     <Link href="/register">Sign up</Link>
                 </p>
             </div>
+
+            {show2faModal && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h2>Two-Factor Authentication</h2>
+                        <p>Please enter the 6-digit code from your authenticator app.</p>
+                        <form onSubmit={handle2faSubmit}>
+                            <InputField
+                                inputType="text"
+                                placeholder="000000"
+                                labelText="Authentication Code"
+                                value={twoFaCode}
+                                onChange={(e) => setTwoFaCode(e.target.value)}
+                                error={errors.twofa}
+                            />
+                            <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
+                                <Button type="submit">Verify & Login</Button>
+                                <Button type="button" onClick={() => setShow2faModal(false)} style={{ background: '#ccc' }}>Cancel</Button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
         </main>
     )
 }

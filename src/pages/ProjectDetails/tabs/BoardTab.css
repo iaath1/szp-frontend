@@ -1,0 +1,135 @@
+.board-tab {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+.board-scroll-container {
+    display: flex;
+    gap: 24px;
+    min-width: max-content;
+}
+
+.board-column {
+    width: 320px;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.board-column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bch-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bch-left h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.bch-count {
+    background: #E5E7EB;
+    color: var(--text-secondary);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.board-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.board-card {
+    background: var(--bg-primary);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+    cursor: grab;
+}
+
+.board-card:active {
+    cursor: grabbing;
+}
+
+.bc-tags {
+    margin-bottom: 8px;
+}
+
+.bc-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.bc-title {
+    margin: 0 0 16px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.bc-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bc-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.bc-meta {
+    display: flex;
+    gap: 12px;
+    color: var(--text-secondary);
+}
+
+.bc-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+}
+
+.bc-add-btn {
+    background: transparent;
+    border: 1px dashed #D1D5DB;
+    color: var(--text-secondary);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.bc-add-btn:hover {
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+    background: var(--bg-primary);
+}
